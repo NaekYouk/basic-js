@@ -1,7 +1,10 @@
-const MODERN_ACTIVITY= 15; 
-const HALF_LIFE_PERIOD= 5730;
+const MODERN_ACTIVITY = 15;
+const HALF_LIFE_PERIOD = 5730;
 
-module.exports = function dateSample(/* sampleActivity */) {
-  throw 'Not implemented';
-  // remove line with error and write your code here
+module.exports = function dateSample( /* sampleActivity */ ) {
+  let valueActivity = (typeof(sampleActivity) == 'string') ? Number.parseFloat(sampleActivity) : false;
+  
+  if (!valueActivity || valueActivity > MODERN_ACTIVITY || valueActivity < 0) return false;
+  
+  return Math.ceil(Math.log(MODERN_ACTIVITY / valueActivity) * HALF_LIFE_PERIOD / 0.693);
 };
